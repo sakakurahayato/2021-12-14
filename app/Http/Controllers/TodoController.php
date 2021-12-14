@@ -16,6 +16,11 @@ class ToDoController extends Controller
 
     public function create(Request $request)
     {
+        $validate_rule = [
+            'content' => 'required|string|max:20',
+        ];
+        $this->validate($request,$validate_rule);
+
         $param = [
             'id' => $request -> id,
             'content' => $request->content,

@@ -94,6 +94,13 @@
     <div class="todo">
       <form action="/todo/create" method="post">
         @csrf
+          @if (count($errors) > 0)
+          <ul>
+            @foreach ($errors->all() as $error)
+              <li>{{$error}}</li>
+            @endforeach
+          </ul>
+        @endif
         <div class="create">
           <input type="text" name="content" class="text-area">
           <input type="submit" class="create-btn" value="追加">
