@@ -1,4 +1,4 @@
-<?php
+<!-- <?php
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -13,7 +13,7 @@ class CreateToDoTable extends Migration
      */
     public function up()
     {
-        Schema::create('to_do', function (Blueprint $table) {
+        Schema::create('todos', function (Blueprint $table) {
             $table
             ->id();
 
@@ -31,6 +31,6 @@ class CreateToDoTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('to_do');
+        Schema::dropIfExists('todos');
     }
 }

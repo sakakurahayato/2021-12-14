@@ -97,6 +97,7 @@
           <input type="text" name="content" class="text-area">
           <input type="submit" class="create-btn" value="追加">
       </form>
+
           <table class="todo-table">
             <tr class="todo-table-tr">
               <th class="todo-table-th">作成日</th>
@@ -106,21 +107,21 @@
             </tr>
 
           @foreach($items as $item)
-            <tr class="todo-table-td">
-              <td class="table-create">
-                {{$item->created_at}}
-              </td>
-              <td class="todo-table-td">
-                <input type="text" class="td-text" value="{{$item->content}}">
-              </td>
 
-              <!-- 更新 -->
-              <form action="/todo/update" method="post">
-              @csrf
+          <tr class="todo-table-td">
+            <td class="table-create">
+              {{$item->created_at}}
+            </td>
+
+          <form action="/todo/update" method="post">
+          @csrf
+            <td class="todo-table-td">
+              <input type="text" class="td-text" name="content" value="{{$item->content}}">
+            </td>
               <td class="todo-table-td">
                 <input type="submit" class="td-update" name="update" value="更新">
               </td>
-            </form>
+          </form>
 
             <form action="/todo/delete" method="post">
             @csrf
