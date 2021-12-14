@@ -21,6 +21,7 @@
       background-color: white;
       width: 70%;
       border-radius: 10px;
+      padding-bottom: 32px;
     }
     .todo-title
     {
@@ -107,26 +108,27 @@
             </tr>
 
           @foreach($items as $item)
-
           <tr class="todo-table-td">
-            <td class="table-create">
-              {{$item->created_at}}
-            </td>
 
           <form action="/todo/update" method="post">
           @csrf
+            <td class="table-create">
+              {{$item->created_at}}
+            </td>
             <td class="todo-table-td">
               <input type="text" class="td-text" name="content" value="{{$item->content}}">
             </td>
-              <td class="todo-table-td">
-                <input type="submit" class="td-update" name="update" value="更新">
-              </td>
+            <td class="todo-table-td">
+              <input type="submit" class="td-update" name="update" value="更新">
+              <input type="hidden" class="td-hidden" name="id" value="{{$item->id}}">
+            </td>
           </form>
 
             <form action="/todo/delete" method="post">
             @csrf
               <td class= "todo-table-td">
                 <input type="submit" class="td-delete" name="delete" value="削除">
+                <input type="hidden" name="id" value="{{$item->id}}">
               </td>
             </tr>
             </form>

@@ -29,17 +29,20 @@ class ToDoController extends Controller
     // 更新
     public function update(Request $request)
     {
-        $items = DB::table('todos')->where('id',$request->id)->get();
+        $item = $request->id;
         $param = [
-            'id' => $request -> id,
-            'content' => $request->content,
-            'created_at'=>$request->created_at,
-            'updated_at'=>$request->update_at,
+        'content' => $request->content
         ];
-        dd($param);
-        DB::table('todos')->where('id',$items->id)->update($param);
+        // dd($param);
+        DB::table('todos')->where('id',$item)->update($param);
         return redirect('/');
-
     }
 
+    public function delete(Request $request)
+    {
+        $param = [
+            'id' =>$request->id];
+            Db::table('todos')->where('id',$request->id)->delete();
+            return redirect('/');
+    }
 }
